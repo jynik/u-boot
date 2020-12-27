@@ -17,6 +17,9 @@
 #include <mmc.h>
 #include <phy.h>
 
+// TODO: Evaluate whether mdelay()'s can be removed/replaced
+#include <linux/delay.h>
+
 DECLARE_GLOBAL_DATA_PTR;
 
 /* MMDC P0/P1 Registers */
