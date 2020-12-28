@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 Emcraft Systems
+ * Copyright (C) 2017-2020 Emcraft Systems
  *
  * Configuration settings for the Emcraft i.MX 6ULL System-On-Module.
  *
@@ -10,7 +10,6 @@
 #ifndef __IMX6ULL_SOM_CONFIG_H
 #define __IMX6ULL_SOM_CONFIG_H
 
-// FIXME: Why doesn't the USB Armory use something similar here?
 #include "mx6_common.h"
 
 #ifdef CONFIG_SECURE_BOOT
@@ -19,18 +18,13 @@
 #endif
 #endif
 
-#define CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG
-
 #define CONFIG_SYS_MALLOC_LEN		(16 * SZ_1M)
 
-#define CONFIG_MXC_UART
 #define CONFIG_MXC_UART_BASE		UART1_BASE
 
 #define CONFIG_SYS_FSL_ESDHC_ADDR	USDHC2_BASE_ADDR
 #define CONFIG_SYS_FSL_USDHC_NUM	1
 
-#define CONFIG_MII
-#define CONFIG_FEC_MXC
 #define CONFIG_FEC_ENET_DEV		0
 #define CONFIG_FEC_XCV_TYPE             RMII
 #define CONFIG_ETHPRIME                 "FEC"
@@ -41,8 +35,6 @@
 #define IMX_FEC_BASE			ENET2_BASE_ADDR
 #define CONFIG_FEC_MXC_PHYADDR          1
 #endif /* CONFIG_FEC_ENET_DEV */
-#define CONFIG_PHYLIB
-#define CONFIG_PHY_MICREL
 
 #define CONFIG_BOOTCOMMAND \
 	   "run nandboot || echo 'Boot from NAND failed, run the update command'"
@@ -137,9 +129,6 @@
 
 /* Miscellaneous configurable options */
 
-//#define CONFIG_SYS_MEMTEST_START	0x80000000
-//#define CONFIG_SYS_MEMTEST_END		(CONFIG_SYS_MEMTEST_START + 0x8000000)
-
 #define CONFIG_SYS_LOAD_ADDR		CONFIG_LOADADDR
 #define CONFIG_SYS_HZ			1000
 
@@ -156,19 +145,7 @@
 #define CONFIG_SYS_INIT_SP_ADDR \
 	(CONFIG_SYS_INIT_RAM_ADDR + CONFIG_SYS_INIT_SP_OFFSET)
 
-//#define CONFIG_NAND_MXS
 #define CONFIG_SYS_MAX_NAND_DEVICE	1
 #define CONFIG_SYS_NAND_BASE		MXS_GPMI_BASE
-
-#define CONFIG_IMX_THERMAL
-
-#define CONFIG_IOMUX_LPSR
-
-#define CONFIG_SOFT_SPI
-
-// TODO: Look into these
-//#define CONFIG_APBH_DMA
-//#define CONFIG_APBH_DMA_BURST
-//#define CONFIG_APBH_DMA_BURST8
 
 #endif /* __IMX6ULL_SOM_CONFIG_H */
