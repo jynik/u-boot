@@ -12,12 +12,6 @@
 
 #include "mx6_common.h"
 
-#ifdef CONFIG_IMX_HAB
-#ifndef CONFIG_CSF_SIZE
-#define CONFIG_CSF_SIZE			0x4000
-#endif
-#endif
-
 #define CONFIG_SYS_MALLOC_LEN		(16 * SZ_1M)
 
 #define CONFIG_MXC_UART_BASE		UART1_BASE
