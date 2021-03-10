@@ -31,6 +31,8 @@ targets += dt.dtb dt-spl.dtb
 
 $(DTB): arch-dtbs
 	$(Q)test -e $@ || (						\
+	echo $(Q) >&2; \
+	echo $@ >&2; \
 	echo >&2;							\
 	echo >&2 "Device Tree Source is not correctly specified.";	\
 	echo >&2 "Please define 'CONFIG_DEFAULT_DEVICE_TREE'";		\
