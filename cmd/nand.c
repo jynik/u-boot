@@ -878,6 +878,7 @@ static int nand_load_image(struct cmd_tbl *cmdtp, struct mtd_info *mtd,
 		return 1;
 	}
 	bootstage_mark(BOOTSTAGE_ID_NAND_HDR_READ);
+    env_set_hex("loadsize", cnt);
 
 	switch (genimg_get_format ((void *)addr)) {
 #if defined(CONFIG_LEGACY_IMAGE_FORMAT)
