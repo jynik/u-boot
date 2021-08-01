@@ -3695,6 +3695,8 @@ static int do_showvar(struct cmd_tbl *cmdtp, int flag, int argc,
 	return rcode;
 }
 
+
+#if 0
 U_BOOT_CMD(
 	showvar, CONFIG_SYS_MAXARGS, 1,	do_showvar,
 	"print local hushshell variables",
@@ -3702,6 +3704,7 @@ U_BOOT_CMD(
 	"showvar name ...\n"
 	"    - print value of hushshell variable 'name'"
 );
+#endif
 
 #endif
 /****************************************************************************/

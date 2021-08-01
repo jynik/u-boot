@@ -39,7 +39,7 @@
 #define CONFIG_BOOTCOMMAND \
     "nboot ${loadaddr} 0 ${kernel_offset}" \
     " && nand read ${dtb_addr} ${dtb_offset} ${dtb_size}" \
-    " && defcon; reset"
+    " && acmeboot; reset"
 
 #define SPLASH_FLASH_BASE		0x400000
 #define SPLASH_PART_SIZE		0xa00000

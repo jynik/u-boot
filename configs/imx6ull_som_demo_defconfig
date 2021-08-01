@@ -83,7 +83,7 @@ CONFIG_CMD_MEMORY=y
 # CONFIG_CMD_NVEDIT is not set
 # CONFIG_CMD_SLEEP is not set
 # CONFIG_CMD_ENV is not set
-
+# CONFIG_CMD_FUSE is not set
 
 CONFIG_POST=y
 CONFIG_CMD_DIAG=y

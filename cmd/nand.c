@@ -402,6 +402,21 @@ static int do_nand(struct cmd_tbl *cmdtp, int flag, int argc,
 
 	cmd = argv[1];
 
+    if (!strcmp(cmd, "erase")        ||
+        !strcmp(cmd, "erase.raw")    ||
+        !strcmp(cmd, "erase.part")   ||
+        !strcmp(cmd, "erase.chip")   ||
+        !strcmp(cmd, "erase.spread") ||
+        !strcmp(cmd, "write")        ||
+        !strcmp(cmd, "write.raw")    ||
+        !strcmp(cmd, "markbad")      ||
+        !strcmp(cmd, "biterr")
+    )
+    {
+        puts("NAND write and erasure disabled.\n");
+        return 1;
+    }
+
 	/* Only "dump" is repeatable. */
 	if (repeat && strcmp(cmd, "dump"))
 		return 0;

@@ -282,7 +282,7 @@ static const char *bootargs =
     "rootfstype=ubifs root=ubi0:rootfs " \
     "ubi.fm_autoconvert=1 quiet";
 
-int do_defcon(struct cmd_tbl *cmdtp, int flag, int argc,
+int do_acme_boot(struct cmd_tbl *cmdtp, int flag, int argc,
                             const char *argv[])
 {
     env_set("bootargs", bootargs);
@@ -303,7 +303,7 @@ int do_defcon(struct cmd_tbl *cmdtp, int flag, int argc,
 
 
 U_BOOT_CMD(
-	defcon,	1,		0,	do_defcon,
-	"DEF CON demo",
+	acmeboot,	1,		0,	do_acme_boot,
+	"Boot ACME Corporation OS",
     ""
 );

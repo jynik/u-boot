@@ -193,10 +193,12 @@ static char bootm_help_text[] =
 	"\tgo      - start OS";
 #endif
 
+#if 0
 U_BOOT_CMD(
 	bootm,	CONFIG_SYS_MAXARGS,	1,	do_bootm,
 	"boot application image from memory", bootm_help_text
 );
+#endif
 
 /*******************************************************************/
 /* bootd - boot default image */

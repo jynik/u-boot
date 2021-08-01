@@ -1483,10 +1483,12 @@ static char env_help_text[] =
 	"env set [-f] name [arg ...]\n";
 #endif
 
+#if 0
 U_BOOT_CMD(
 	env, CONFIG_SYS_MAXARGS, 1, do_env,
 	"environment handling commands", env_help_text
 );
+#endif
 
 /*
  * Old command line interface, kept for compatibility
