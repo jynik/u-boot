@@ -53,12 +53,6 @@
 # define ROOTFS_FLASH_BASE		0x1a20000	/* (KERNEL_FLASH_BASE + KERNEL_PART_SIZE) */
 
 #define REV_EXTRA_ENV							\
-	"nandboot=nboot ${loadaddr} 0 ${kernel_offset}" \
-	" && nand read ${dtb_addr} ${dtb_offset} ${dtb_size}"		\
-	" && run args && run boot_dtb\0"				\
-									\
-	"boot_dtb=bootm ${loadaddr} - ${dtb_addr}\0"			\
-									\
 	"verify=yes\0"							\
 	"splash_offset="	__stringify(SPLASH_FLASH_BASE) "\0"	\
 	"dtb_offset="		__stringify(DTB_FLASH_BASE) "\0"	\

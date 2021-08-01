@@ -278,7 +278,8 @@ u32 get_board_rev(void)
 #define str(s) #s
 
 static const char *bootargs =
-    "quiet rootwait=1 rw ubi.mtd=4,2048 " \
+    "console=null consoleblank=1 quiet " \
+    "rootwait=1 rw ubi.mtd=4,2048 " \
     "rootfstype=ubifs root=ubi0:rootfs " \
     "ubi.fm_autoconvert=1 quiet";
 
