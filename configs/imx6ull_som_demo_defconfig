@@ -13,8 +13,8 @@ CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG=y
 CONFIG_ENV_SIZE=0x10000
 CONFIG_ENV_OFFSET=0x60000
 CONFIG_NR_DRAM_BANKS=1
-CONFIG_ENV_IS_IN_NAND=y
-CONFIG_SYS_PROMPT="IMX6ULL-SOM U-Boot > "
+CONFIG_ENV_IS_NOWHERE=y
+CONFIG_SYS_PROMPT="DEF CON U-Boot > "
 CONFIG_DISPLAY_CPUINFO=y
 CONFIG_DISPLAY_BOARDINFO=y
 CONFIG_BOOTDELAY=3
@@ -48,9 +48,13 @@ CONFIG_PINCTRL_IMX6=y
 CONFIG_DM_REGULATOR=y
 # CONFIG_EFI_LOADER is not set
 # CONFIG_SYS_MALLOC_CLEAR_ON_INIT is not set
+CONFIG_CMD_RUN=y
+
+# commented out stuff in code for this
+CONFIG_CMD_MEMORY=y
 
 # Disable a bunch of commands so we can demo use of crc32 as a memory R/W primitive
-# CONFIG_CMD_MEMORY is not set
+# CONFIG_CMD_BLOCK_CACHE is not set
 # CONFIG_CMD_FLASH is not set
 # CONFIG_CMD_LOADB is not set
 # CONFIG_CMD_LOADS is not set
@@ -60,10 +64,28 @@ CONFIG_DM_REGULATOR=y
 # CONFIG_CMD_ELF is not set
 # CONFIG_CMD_FDT is not set
 # CONFIG_CMD_GO is not set
-# CONFIG_CMD_RUN is not set
 # CONFIG_CMD_IMI is not set
 # CONFIG_CMD_XIMG is not set
 # CONFIG_CMD_NFS is not set
-# CONFIG_CMD_NET is not set
 # CONFIG_CMD_BMODE is not set
 # CONFIG_CMD_ITEST is not set
+# CONFIG_CMD_BOOTD is not set
+# CONFIG_CMD_BOOT is not set
+# CONFIG_CMD_EDITENV is not set
+# CONFIG_CMD_SAVENV is not set
+# CONFIG_CMD_SETENV is not set
+# CONFIG_CMD_NBOOT is not set
+# CONFIG_CMD_BOOTP is not set
+# CONFIG_CMD_BOOTP is not set
+# CONFIG_CMD_TFTPBOOT is not set
+# CONFIG_CMD_PINMUX is not set
+# CONFIG_CMD_CONSOLE is not set
+# CONFIG_CMD_NVEDIT is not set
+# CONFIG_CMD_SLEEP is not set
+# CONFIG_CMD_ENV is not set
+
+
+CONFIG_POST=y
+CONFIG_CMD_DIAG=y
+CONFIG_CMD_CRC32=y
+

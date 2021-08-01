@@ -1492,9 +1492,12 @@ void select_ldb_di_clock_source(enum ldb_di_clock clk)
 
 /***************************************************/
 
+#if 0
 U_BOOT_CMD(
 	clocks,	CONFIG_SYS_MAXARGS, 1, do_mx6_showclocks,
 	"display clocks",
 	""
 );
+#endif
+
 #endif

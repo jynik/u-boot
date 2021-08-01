@@ -1536,6 +1536,7 @@ U_BOOT_CMD_COMPLETE(
 );
 #endif
 
+#if 0
 U_BOOT_CMD_COMPLETE(
 	setenv, CONFIG_SYS_MAXARGS, 0,	do_env_set,
 	"set environment variables",
@@ -1559,6 +1560,7 @@ U_BOOT_CMD_COMPLETE(
 	"    - [forcibly] delete environment variable 'name'",
 	var_complete
 );
+#endif
 
 #if defined(CONFIG_CMD_ASKENV)
 

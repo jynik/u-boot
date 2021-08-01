@@ -20,6 +20,8 @@
 // TODO: Evaluate whether mdelay()'s can be removed/replaced
 #include <linux/delay.h>
 
+#include "command.h"
+
 DECLARE_GLOBAL_DATA_PTR;
 
 /* MMDC P0/P1 Registers */
@@ -272,3 +274,36 @@ u32 get_board_rev(void)
 {
 	return get_cpu_rev();
 }
+#define xstr(s) str(s)
+#define str(s) #s
+
+static const char *bootargs =
+    "quiet rootwait=1 rw ubi.mtd=4,2048 " \
+    "rootfstype=ubifs root=ubi0:rootfs " \
+    "ubi.fm_autoconvert=1 quiet";
+
+int do_defcon(struct cmd_tbl *cmdtp, int flag, int argc,
+                            const char *argv[])
+{
+    env_set("bootargs", bootargs);
+
+    char *bootm_argv[] = {
+        "bootm",
+        env_get("loadaddr"),
+        "-",
+        "0x83000000"
+    };
+
+    printf("%s %s %s %s\n",
+            bootm_argv[0], bootm_argv[1], bootm_argv[2], bootm_argv[3]);
+
+    do_bootm(NULL, 0, 4, bootm_argv);
+    return 1;
+}
+
+
+U_BOOT_CMD(
+	defcon,	1,		0,	do_defcon,
+	"DEF CON demo",
+    ""
+);

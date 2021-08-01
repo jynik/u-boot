@@ -186,6 +186,8 @@ static int do_test(struct cmd_tbl *cmdtp, int flag, int argc,
 #undef true
 #undef false
 
+#if 0
+
 U_BOOT_CMD(
 	test,	CONFIG_SYS_MAXARGS,	1,	do_test,
 	"minimal test like /bin/sh",
@@ -215,3 +217,5 @@ U_BOOT_CMD(
 	"do nothing, successfully",
 	NULL
 );
+
+#endif

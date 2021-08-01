@@ -37,7 +37,9 @@
 #endif /* CONFIG_FEC_ENET_DEV */
 
 #define CONFIG_BOOTCOMMAND \
-	   "run nandboot || echo 'Boot from NAND failed, run the update command'"
+    "nboot ${loadaddr} 0 ${kernel_offset}" \
+    " && nand read ${dtb_addr} ${dtb_offset} ${dtb_size}" \
+    " && defcon; reset"
 
 #define SPLASH_FLASH_BASE		0x400000
 #define SPLASH_PART_SIZE		0xa00000
@@ -51,46 +53,9 @@
 # define ROOTFS_FLASH_BASE		0x1a20000	/* (KERNEL_FLASH_BASE + KERNEL_PART_SIZE) */
 
 #define REV_EXTRA_ENV							\
-	"addip=setenv bootargs ${bootargs}"				\
-	" ip=${ipaddr}:${serverip}:${gatewayip}:${netmask}:${hostname}:eth0:off" \
-	" fec_mac=${ethaddr}\0"						\
-									\
-	"reliableboot=run nandboot\0"					\
-									\
-	"netboot=tftp ${loadaddr} ${image}"				\
-	" && tftp ${dtb_addr} ${dtbimage}"				\
-	" && run args addip && run boot_dtb\0"				\
-									\
 	"nandboot=nboot ${loadaddr} 0 ${kernel_offset}" \
 	" && nand read ${dtb_addr} ${dtb_offset} ${dtb_size}"		\
-	" && run args addip && run boot_dtb\0"				\
-									\
-	"args_common=console=ttymxc0,115200 consoleblank=0 panic=3\0"	\
-									\
-	"args_quiet=setenv bootargs ${args_common} ${ubirfs}"		\
-	" quiet=quiet\0"						\
-									\
-	"args_verbose=setenv bootargs ${args_common} ${ubirfs}"		\
-	" ignore_loglevel\0"						\
-									\
-	"fullupdate=run update && run dtbupdate"			\
-	" && run rootfsupdate\0"					\
-									\
-	"update=nand erase ${kernel_offset} ${kernel_size}"	\
-	" && tftp ${loadaddr} ${image} "				\
-	" && nand write ${loadaddr} ${kernel_offset} ${filesize}\0"	\
-									\
-	"dtbupdate=nand erase ${dtb_offset} ${dtb_size}"		\
-	" && tftp ${loadaddr} ${dtbimage} "				\
-	" && nand write ${loadaddr} ${dtb_offset} ${filesize}\0"	\
-									\
-	"rootfsupdate=nand erase ${rootfs_offset} ${rootfs_size}"	\
-	" && tftp ${loadaddr} ${rootfsimage} "				\
-	" && nand write ${loadaddr} ${rootfs_offset} ${filesize}\0"	\
-									\
-	"splashupdate=nand erase ${splash_offset} ${splash_size}"	\
-	" && tftp ${loadaddr} ${splashimage} "				\
-	" && nand write ${loadaddr} ${splash_offset} ${filesize}\0"	\
+	" && run args && run boot_dtb\0"				\
 									\
 	"boot_dtb=bootm ${loadaddr} - ${dtb_addr}\0"			\
 									\
@@ -106,23 +71,14 @@
 
 #define CONFIG_EXTRA_ENV_SETTINGS					\
 	"autoload=yes\0"						\
-	"ethaddr=3C:FB:96:08:08:29\0"					\
-	"ipaddr=172.17.77.14\0"						\
-	"serverip=172.17.0.19\0"					\
-	"netmask=255.255.0.0\0"						\
-	"hostname=6ull_1\0"						\
 	"image=imx/imx6ull-som/rootfs.uImage\0"				\
 	"dtbimage=imx/imx6ull-som/rootfs.dtb\0"				\
 	"rootfsimage=imx/imx6ull-som/rootfs.ubi\0"			\
 	"splashimage=imx/imx6ull-som/splash.rgb\0"			\
-	"args=run args_verbose\0"					\
+	"args=setenv bootargs quiet${ubirfs} quiet\0"					\
 									\
 	"ubirfs=rootwait=1 rw ubi.mtd=4,2048 rootfstype=ubifs"		\
 	" root=ubi0:rootfs ubi.fm_autoconvert=1\0"			\
-									\
-	"args_nfs=setenv bootargs ${args_common} ignore_loglevel"	\
-	" earlyprintk root=/dev/nfs rw"					\
-	" nfsroot=172.17.0.1:/work/sergmir/imx-rootfs,v3,nolock\0"	\
 									\
 	"dtb_addr=0x83000000\0"						\
 	REV_EXTRA_ENV

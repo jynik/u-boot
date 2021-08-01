@@ -1312,6 +1312,9 @@ static int do_random(struct cmd_tbl *cmdtp, int flag, int argc,
 #endif
 
 /**************************************************/
+
+#if 0
+
 U_BOOT_CMD(
 	md,	3,	1,	do_mem_md,
 	"memory display",
@@ -1349,6 +1352,8 @@ U_BOOT_CMD(
 	"memory compare",
 	"[.b, .w, .l" HELP_Q "] addr1 addr2 count"
 );
+
+#endif
 
 #ifdef CONFIG_CMD_MEM_SEARCH
 /**************************************************/
@@ -1394,6 +1399,8 @@ static int do_mem_info(struct cmd_tbl *cmdtp, int flag, int argc,
 }
 #endif
 
+#if 0
+
 U_BOOT_CMD(
 	base,	2,	1,	do_mem_base,
 	"print or set address offset",
@@ -1406,6 +1413,8 @@ U_BOOT_CMD(
 	"infinite loop on address range",
 	"[.b, .w, .l" HELP_Q "] address number_of_objects"
 );
+
+#endif
 
 #ifdef CONFIG_LOOPW
 U_BOOT_CMD(
